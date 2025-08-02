@@ -54,5 +54,30 @@ class LanguagePt implements Languages {
   @override
   String get english => 'Inglês';
   @override
-  String get portuguese => 'Português (BR)';
+  String get portuguese => 'Português';
+  @override
+  String get welcomeToBabylon => 'Bem-vindo ao Babylon';
+  @override
+  String get emailLabel => 'Endereço de e-mail';
+  @override
+  String get passwordLabel => 'Senha';
+  @override
+  String get loginButton => 'Entrar';
+  @override
+  String get fullNameRequired => 'Nome completo é obrigatório';
+  @override
+  String get emailRequired => 'E-mail é obrigatório';
+  @override
+  String get invalidEmail => 'Formato de e-mail inválido';
+  @override
+  String get passwordRequired => 'Senha é obrigatória';
+  @override
+  String get passwordInvalidFormat =>
+      'Ao menos 6 dígitos, uma letra maiúscula e um número.';
+  @override
+  String get loginError => 'Erro ao fazer login';
+  @override
+  String get errorLoadingData => 'Erro ao carregar os dados';
+  @override
+  String get createAccount => 'Criar conta';
 }

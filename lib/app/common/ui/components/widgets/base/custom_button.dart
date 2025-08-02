@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/style/styte.dart';
+import '../../../../../core/style/styte.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -9,6 +9,7 @@ class CustomButton extends StatelessWidget {
   final bool isLoading;
   final double? width;
   final double? height;
+  final EdgeInsetsGeometry? margin;
 
   const CustomButton({
     super.key,
@@ -18,6 +19,7 @@ class CustomButton extends StatelessWidget {
     this.isLoading = false,
     this.width,
     this.height,
+    this.margin,
   });
 
   @override
@@ -25,11 +27,12 @@ class CustomButton extends StatelessWidget {
     return Container(
       width: width,
       height: height ?? 42,
-
-      margin: const EdgeInsets.symmetric(
-        vertical: Spacing.x2,
-        horizontal: Spacing.x2,
-      ),
+      margin:
+          margin ??
+          const EdgeInsets.symmetric(
+            vertical: Spacing.x2,
+            horizontal: Spacing.x2,
+          ),
       child: ElevatedButton(
         onPressed: (enabled && !isLoading) ? onPressed : null,
         style: ElevatedButton.styleFrom(

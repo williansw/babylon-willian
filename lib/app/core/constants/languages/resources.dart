@@ -34,4 +34,16 @@ class R {
   static String get apply => _lang.apply;
   static String get portuguese => _lang.portuguese;
   static String get english => _lang.english;
+  static String get welcomeToBabylon => _lang.welcomeToBabylon;
+  static String get emailLabel => _lang.emailLabel;
+  static String get passwordLabel => _lang.passwordLabel;
+  static String get loginButton => _lang.loginButton;
+  static String get fullNameRequired => _lang.fullNameRequired;
+  static String get emailRequired => _lang.emailRequired;
+  static String get invalidEmail => _lang.invalidEmail;
+  static String get passwordRequired => _lang.passwordRequired;
+  static String get passwordInvalidFormat => _lang.passwordInvalidFormat;
+  static String get loginError => _lang.loginError;
+  static String get errorLoadingData => _lang.errorLoadingData;
+  static String get createAccount => _lang.createAccount;
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/style/styte.dart';
+import '../../../../../core/style/styte.dart';
 
 /// Custom text widget that applies centralized styles through [AppTextStyle].
 ///

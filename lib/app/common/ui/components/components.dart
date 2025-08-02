@@ -1,5 +1,5 @@
-export './widgets/custom_scaffold.dart';
-export './widgets/custom_space.dart';
-export './widgets/custom_text.dart';
-export './widgets/custom_button.dart';
-export './widgets/cumtom_text_field.dart';
+export 'widgets/base/custom_scaffold.dart';
+export 'widgets/base/custom_space.dart';
+export 'widgets/base/custom_text.dart';
+export 'widgets/base/custom_button.dart';
+export 'widgets/base/custom_text_field.dart';

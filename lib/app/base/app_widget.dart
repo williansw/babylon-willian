@@ -1,12 +1,13 @@
 import 'package:babylon/app/base/app_routes.dart';
 import 'package:babylon/app/base/dependences.dart';
+import 'package:babylon/app/core/style/styte.dart';
 import 'package:babylon/app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../core/constants/languages/languages.dart';
 import '../core/services/locate_service.dart';
-import '../core/style/app_theme.dart';
+import '../features/login/viewmodel/login_view_model.dart';
 
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
@@ -22,7 +23,9 @@ class App extends StatelessWidget {
       child: Consumer<LocateService>(
         builder: (context, locateService, _) {
           return MultiProvider(
-            providers: [],
+            providers: [
+              ChangeNotifierProvider(create: (_) => getIt<LoginViewModel>()),
+            ],
             child: MaterialApp.router(
               scaffoldMessengerKey: scaffoldMessengerKey,
               builder: (context, child) {
@@ -40,7 +43,9 @@ class App extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               locale: locateService.locale,
               theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                colorScheme: ColorScheme.fromSeed(
+                  seedColor: AppColor.secondary,
+                ),
                 textTheme: AppTheme.textTheme,
                 pageTransitionsTheme: const PageTransitionsTheme(
                   builders: {

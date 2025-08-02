@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../core/style/styte.dart';
+import '../../../../../core/style/styte.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -248,7 +248,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
               hintText: widget.hintText,
               hintStyle: effectiveHintStyle,
               helperText: widget.helperText,
-              errorText: _errorText ?? widget.errorText,
               errorStyle: effectiveErrorStyle,
               contentPadding:
                   widget.contentPadding ??
@@ -304,13 +303,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   ),
               counterText: widget.counterText,
             ),
-            onChanged: (value) {
-              widget.onChanged?.call(value);
-              if (widget.autoValidateMode ==
-                  AutovalidateMode.onUserInteraction) {
-                _validate();
-              }
-            },
+            validator: widget.validator,
+            onChanged: widget.onChanged,
             onFieldSubmitted: widget.onSubmitted,
             onEditingComplete: widget.onEditingComplete,
             obscureText: widget.obscureText && !_showPassword,

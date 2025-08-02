@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../core/style/styte.dart';
+import '../../../../../core/style/styte.dart';
 
 /// Standardized vertical and horizontal spacing widgets.
 ///

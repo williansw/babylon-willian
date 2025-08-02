@@ -55,4 +55,30 @@ class LanguageEn implements Languages {
   String get english => 'English';
   @override
   String get portuguese => 'Portuguese';
+  @override
+  String get welcomeToBabylon => 'Welcome to Babylon';
+  @override
+  String get emailLabel => 'Email Address';
+  @override
+  String get passwordLabel => 'Password';
+  @override
+  String get loginButton => 'Login';
+  @override
+  String get fullNameRequired => 'Full name is required';
+  @override
+  String get emailRequired => 'Email is required';
+  @override
+  String get invalidEmail => 'Invalid email format';
+  @override
+  String get passwordRequired => 'Password is required';
+  @override
+  String get passwordInvalidFormat =>
+      'At least 6 digits, one uppercase letter, and one number.';
+  @override
+  String get loginError => 'Login error';
+  @override
+  String get errorLoadingData => 'Error loading data';
+  @override
+String get createAccount => 'Create Account';
+
 }

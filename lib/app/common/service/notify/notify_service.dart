@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../../core/exceptions/service/log_service.dart';
 
-enum NotifyTypeEnum { splash, signup, home }
+enum NotifyTypeEnum { splash, login, signup, home }
 
 class NotifyService extends ChangeNotifier {
   NotifyService._();
@@ -20,6 +20,9 @@ class NotifyService extends ChangeNotifier {
       switch (type) {
         case NotifyTypeEnum.splash:
           //getIt<SplashViewModel>().notifyListeners();
+          break;
+        case NotifyTypeEnum.login:
+          //getIt<SignUpViewModel>().notifyListeners();
           break;
         case NotifyTypeEnum.signup:
           //getIt<SignUpViewModel>().notifyListeners();

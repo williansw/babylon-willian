@@ -36,4 +36,16 @@ abstract class Languages {
   String get apply;
   String get portuguese;
   String get english;
+  String get welcomeToBabylon;
+  String get emailLabel;
+  String get passwordLabel;
+  String get loginButton;
+  String get fullNameRequired;
+  String get emailRequired;
+  String get invalidEmail;
+  String get passwordRequired;
+  String get passwordInvalidFormat;
+  String get loginError;
+  String get errorLoadingData;
+  String get createAccount;
 }
