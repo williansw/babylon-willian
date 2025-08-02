@@ -14,6 +14,7 @@ abstract class Languages {
   String get popupRouteLabel;
   String get dialogRouteLabel;
   String get screenRouteLabel;
+  String notify(String name);
   // AppException
   String get flutterError;
   String get unnamedRoute;

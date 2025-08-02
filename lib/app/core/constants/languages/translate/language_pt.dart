@@ -3,6 +3,8 @@ import '../languages.dart';
 class LanguagePt implements Languages {
   //AppRoutes
   @override
+  String notify(name) => 'NotifyType $name updated.';
+  @override
   String get routePopped => 'Route popped';
   @override
   String get routePushed => 'Route pushed';
