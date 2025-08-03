@@ -7,6 +7,8 @@ abstract class Languages {
     return Localizations.of<Languages>(context, Languages);
   }
 
+  String notify(String name);
+  String genericErrorWithDetail(String detail);
   //AppRoutes
   String get routePopped;
   String get routePushed;
@@ -14,7 +16,6 @@ abstract class Languages {
   String get popupRouteLabel;
   String get dialogRouteLabel;
   String get screenRouteLabel;
-  String notify(String name);
   // AppException
   String get flutterError;
   String get unnamedRoute;
@@ -30,6 +31,13 @@ abstract class Languages {
   String get functionLabel;
   String get logLocalLabel;
   String get logBodyLabel;
+  // Firebase Auth Errors
+  String get signupEmailAlreadyInUse;
+  String get signupInvalidEmail;
+  String get signupWeakPassword;
+  String get signupUserNotFound;
+  String get signupWrongPassword;
+  String get signupGenericError;
   //Screen
   String hi(String name);
   String get appName;
@@ -51,4 +59,5 @@ abstract class Languages {
   String get registerButton;
   String get backToLogin;
   String get fullNameLabel;
+  String get signupMissingEmailOrPassword;
 }

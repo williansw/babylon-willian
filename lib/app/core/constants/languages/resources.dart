@@ -6,6 +6,8 @@ class R {
     _lang = language ?? LanguageEn();
   }
 
+  static String genericErrorWithDetail(detail) =>
+      _lang.genericErrorWithDetail(detail);
   //AppRoutes
   static String get routePopped => _lang.routePopped;
   static String get routePushed => _lang.routePushed;
@@ -49,4 +51,12 @@ class R {
   static String get registerButton => _lang.registerButton;
   static String get backToLogin => _lang.backToLogin;
   static String get fullNameLabel => _lang.fullNameLabel;
+  static String get signupEmailAlreadyInUse => _lang.signupEmailAlreadyInUse;
+  static String get signupInvalidEmail => _lang.signupInvalidEmail;
+  static String get signupWeakPassword => _lang.signupWeakPassword;
+  static String get signupUserNotFound => _lang.signupUserNotFound;
+  static String get signupWrongPassword => _lang.signupWrongPassword;
+  static String get signupGenericError => _lang.signupGenericError;
+  static String get signupMissingEmailOrPassword =>
+      _lang.signupMissingEmailOrPassword;
 }

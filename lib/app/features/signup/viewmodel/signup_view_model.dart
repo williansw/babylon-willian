@@ -5,9 +5,25 @@ import 'package:flutter/material.dart';
 import '../../../base/base_model.dart';
 import '../../../base/route_service.dart';
 import '../../../core/constants/languages/resources.dart';
+import '../../../core/model/user_model.dart';
+import '../../../core/services/firebase_service.dart';
+import '../../../core/services/local_storage_service.dart';
+import '../../../data/auth/use_case/auth_use_case.dart';
+import '../../../data/user/use_case/user_use_case.dart';
 
 /// ViewModel for the feature 'Signup'.
-class SignupViewModel extends BaseModel {
+class SignUpViewModel extends BaseModel {
+  final AuthUseCase authUseCase;
+  final UserUseCase userUseCase;
+  final LocalStorageService localStorageService;
+  final FirebaseService firebaseService;
+  SignUpViewModel({
+    required this.authUseCase,
+    required this.userUseCase,
+    required this.localStorageService,
+    required this.firebaseService,
+  }) : super();
+
   final formKey = GlobalKey<FormState>();
 
   final fullNameController = TextEditingController();
@@ -21,32 +37,83 @@ class SignupViewModel extends BaseModel {
 
   void goToLogin() => Nav.goToLogin();
 
-  Future<void> loadData() async {
+  Future<void> createUserWithEmailAndPassword() async {
+    if (!formKey.currentState!.validate()) return;
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      setError(R.signupMissingEmailOrPassword);
+      return;
+    }
     setLoading();
     try {
-      // setSuccess();
+      await authUseCase
+          .create(
+            email: emailController.text.toLowerCase(),
+            password: passwordController.text,
+          )
+          .then((result) {
+            return result.when(
+              (success) async {
+                setSuccess();
+                if (success.userCredential.user?.uid != null) {
+                  localStorageService.setString(
+                    LocalStorageKeys.userId,
+                    success.userCredential.user?.uid ?? '',
+                  );
+                  localStorageService.setString(
+                    LocalStorageKeys.email,
+                    emailController.text.toLowerCase(),
+                  );
+                  await _createUser(success.userCredential.user!.uid);
+                }
+              },
+              (error) {
+                setError(firebaseService.mapAuthError(error.error ?? ''));
+                return null;
+              },
+            );
+          });
     } catch (e) {
-      setError('Erro ao carregar dados: $e');
+      setError(R.genericErrorWithDetail(e.toString()));
     }
   }
 
-  Future<void> submit() async {
-    if (!formKey.currentState!.validate()) return;
-
+  Future<bool> _createUser(String userId) async {
     setLoading();
-
     try {
-      await Future.delayed(const Duration(seconds: 2));
+      await userUseCase
+          .createUser(
+            user: UserModel(
+              id: userId,
+              name: fullNameController.text.removeDiacritics.capitalized,
+              email: emailController.text.toLowerCase().removeDiacritics,
+              password: passwordController.text,
+              createdAt: DateTime.now(),
+            ),
+          )
+          .then((result) {
+            return result.when(
+              (sucess) {
+                setSuccess();
+                Nav.goToHome();
+              },
+              (error) {
+                setError(R.genericErrorWithDetail(error.error));
+              },
+            );
+          });
       setSuccess();
-      Nav.goToHome();
     } catch (e) {
-      //setError('${R.loginError}: $e');
+      setError(R.genericErrorWithDetail(e.toString()));
     }
+    return false;
   }
 
   String? validateFullName(String? value) {
     if (value == null || value.trim().isEmpty) {
       return R.nameRequired;
+    }
+    if (!value.isValidName()) {
+      return R.fullNameLabel;
     }
     return null;
   }

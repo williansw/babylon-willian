@@ -1,5 +1,6 @@
 import 'package:babylon/app/core/common/extension/json_extension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel {
   String? id;
@@ -7,14 +8,15 @@ class UserModel {
   String? email;
   String? password;
   DateTime? createdAt;
+  UserCredential? userCredential;
 
   UserModel({
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.createdAt,
-
+    this.id,
+    this.name,
+    this.email,
+    this.createdAt,
     this.password,
+    this.userCredential,
   });
 
   static UserModel? fromSnapshot(DocumentSnapshot<Map<String, dynamic>> doc) {

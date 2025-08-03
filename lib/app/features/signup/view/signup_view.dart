@@ -9,7 +9,7 @@ import '../../../core/style/styte.dart';
 import '../viewmodel/signup_view_model.dart';
 
 class SignupView extends StatelessWidget {
-  final SignupViewModel viewModel;
+  final SignUpViewModel viewModel;
 
   const SignupView({super.key, required this.viewModel});
 
@@ -23,7 +23,7 @@ class SignupView extends StatelessWidget {
 }
 
 class _SingUpForm extends StatelessWidget {
-  final SignupViewModel viewModel;
+  final SignUpViewModel viewModel;
   const _SingUpForm({required this.viewModel});
 
   @override
@@ -48,7 +48,7 @@ class _SingUpForm extends StatelessWidget {
   Widget get textFields => Column(
     children: [
       FullNameTextField(
-        controller: viewModel.passwordController,
+        controller: viewModel.fullNameController,
         validator: viewModel.validateFullName,
       ),
       SizedBox(height: Spacing.x3),
@@ -72,7 +72,7 @@ class _SingUpForm extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.zero,
         isLoading: viewModel.isLoading,
-        onPressed: () => viewModel.submit(),
+        onPressed: () => viewModel.createUserWithEmailAndPassword(),
       ),
       SizedBox(height: Spacing.x4),
       loginButton,

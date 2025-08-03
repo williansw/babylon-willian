@@ -2,6 +2,9 @@ import '../languages.dart';
 
 class LanguageEn implements Languages {
   //AppRoutes
+
+  @override
+  String genericErrorWithDetail(String detail) => 'An error occurred: $detail';
   @override
   String notify(name) => 'NotifyType $name updated.';
   @override
@@ -44,6 +47,22 @@ class LanguageEn implements Languages {
   String get logLocalLabel => 'Local';
   @override
   String get logBodyLabel => 'Body';
+  // Firebase Auth Errors
+  @override
+  String get signupEmailAlreadyInUse => 'This email is already registered.';
+  @override
+  String get signupInvalidEmail => 'The email provided is not valid.';
+  @override
+  String get signupWeakPassword =>
+      'Password must be at least 6 characters long.';
+  @override
+  String get signupUserNotFound =>
+      'User not found. Please check the email entered.';
+  @override
+  String get signupWrongPassword => 'Incorrect password. Please try again.';
+  @override
+  String get signupGenericError =>
+      'An error occurred during sign up. Please try again.';
   //Screen
   @override
   String get appName => 'Babylon - WILLIAN';
@@ -85,5 +104,7 @@ class LanguageEn implements Languages {
   @override
   String get backToLogin => 'Back to Login';
   @override
-  String get fullNameLabel => 'Full Name';
+  String get fullNameLabel => 'Full Name is required';
+  @override
+  String get signupMissingEmailOrPassword => 'Email or password not provided';
 }
