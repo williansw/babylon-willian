@@ -5,8 +5,23 @@ import 'package:babylon/app/base/base_model.dart';
 import 'package:babylon/app/core/common/service/notify/notify_service.dart';
 
 import '../../../core/constants/languages/languages.dart';
+import '../../../core/services/firebase_service.dart';
+import '../../../core/services/local_storage_service.dart';
+import '../../../data/auth/use_case/auth_use_case.dart';
+import '../../../data/user/use_case/user_use_case.dart';
 
 class LoginViewModel extends BaseModel {
+  final UserUseCase userUseCase;
+  final AuthUseCase authUseCase;
+  final FirebaseService firebaseService;
+  final LocalStorageService localStorageService;
+  LoginViewModel({
+    required this.userUseCase,
+    required this.authUseCase,
+    required this.firebaseService,
+    required this.localStorageService,
+  });
+
   final formKey = GlobalKey<FormState>();
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
@@ -19,25 +34,63 @@ class LoginViewModel extends BaseModel {
 
   void goToSingUp() => Nav.goToSingUp();
 
-  Future<void> loadData() async {
+  Future<void> signInWithEmailAndPassword() async {
+    if (!formKey.currentState!.validate()) return;
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      setError(R.signupMissingEmailOrPassword);
+      return;
+    }
     setLoading();
     try {
-      await Future.delayed(const Duration(seconds: 1));
-      setSuccess();
+      await authUseCase
+          .auth(
+            email: emailController.text.toLowerCase(),
+            password: passwordController.text,
+          )
+          .then((result) {
+            return result.when(
+              (success) {
+                if (success.userCredential.user?.uid != null) {
+                  localStorageService.setString(
+                    LocalStorageKeys.userId,
+                    success.userCredential.user?.uid ?? '',
+                  );
+                  localStorageService.setString(
+                    LocalStorageKeys.email,
+                    emailController.text.toLowerCase(),
+                  );
+                  _getUser(success.userCredential.user!.uid);
+                }
+              },
+              (error) {
+                setError(firebaseService.mapAuthError(error.error ?? ''));
+              },
+            );
+          });
     } catch (e) {
-      setError('${R.errorLoadingData}: $e');
+      setError(R.genericErrorWithDetail('$e'));
     }
   }
 
-  Future<void> submit() async {
-    if (!formKey.currentState!.validate()) return;
-    setLoading();
+  Future<bool> _getUser(String userId) async {
     try {
-      await Future.delayed(const Duration(seconds: 2));
-      setSuccess();
-      Nav.goToHome();
+      return userUseCase.getUser(userId: userId).then((result) {
+        return result.when(
+          (success) {
+            setSuccess();
+            userUseCase.setUser(success);
+            Nav.goToHome();
+            return true;
+          },
+          (error) {
+            setError(error.error ?? R.genericError);
+            return false;
+          },
+        );
+      });
     } catch (e) {
-      setError('${R.loginError}: $e');
+      setError(R.genericErrorWithDetail('$e'));
+      return false;
     }
   }
 

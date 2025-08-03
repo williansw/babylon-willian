@@ -9,6 +9,7 @@ abstract class Languages {
 
   String notify(String name);
   String genericErrorWithDetail(String detail);
+  String get genericError;
   //AppRoutes
   String get routePopped;
   String get routePushed;

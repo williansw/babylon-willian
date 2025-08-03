@@ -69,7 +69,7 @@ class _LoginForm extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.zero,
         isLoading: viewModel.isLoading,
-        onPressed: () => viewModel.submit(),
+        onPressed: () => viewModel.signInWithEmailAndPassword(),
       ),
       SizedBox(height: Spacing.x4),
       signUpButton,

@@ -49,7 +49,14 @@ void setupLocator() {
   );
   // ========== ViewModels ==========
 
-  getIt.registerFactory<LoginViewModel>(() => LoginViewModel());
+  getIt.registerFactory<LoginViewModel>(
+    () => LoginViewModel(
+      authUseCase: getIt<AuthUseCase>(),
+      userUseCase: getIt<UserUseCase>(),
+      firebaseService: getIt<FirebaseService>(),
+      localStorageService: getIt<LocalStorageService>(),
+    ),
+  );
   getIt.registerFactory<SignUpViewModel>(
     () => SignUpViewModel(
       authUseCase: getIt<AuthUseCase>(),

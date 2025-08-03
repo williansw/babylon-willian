@@ -8,6 +8,7 @@ class R {
 
   static String genericErrorWithDetail(detail) =>
       _lang.genericErrorWithDetail(detail);
+  static String get genericError => _lang.genericError;
   //AppRoutes
   static String get routePopped => _lang.routePopped;
   static String get routePushed => _lang.routePushed;

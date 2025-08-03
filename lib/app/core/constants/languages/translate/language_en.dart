@@ -107,4 +107,6 @@ class LanguageEn implements Languages {
   String get fullNameLabel => 'Full Name is required';
   @override
   String get signupMissingEmailOrPassword => 'Email or password not provided';
+  @override
+  String get genericError => 'An unexpected error occurred. Please try again.';
 }

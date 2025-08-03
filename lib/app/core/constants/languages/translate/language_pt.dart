@@ -105,4 +105,7 @@ class LanguagePt implements Languages {
   String get fullNameLabel => 'Nome completo';
   @override
   String get signupMissingEmailOrPassword => 'E-mail ou senha não informados';
+
+  @override
+  String get genericError => 'Ocorreu um erro inesperado. Tente novamente.';
 }
