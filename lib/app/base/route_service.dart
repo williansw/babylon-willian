@@ -44,6 +44,7 @@ abstract class Nav {
   // ────────────────────────────────────────
   // Named Navigation
   // ────────────────────────────────────────
+  static void goToSingUp() => to(Routers.singup);
   static void goToLogin() => to(Routers.login);
   static void goToHome() => to(Routers.home, clearStack: true);
 

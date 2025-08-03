@@ -106,6 +106,11 @@ class AppTextStyle {
   AppTextStyle get overline => copyWith(decoration: TextDecoration.overline);
 
   /// Predefined styles using Nunito font
+  static AppTextStyle get styleBase => AppTextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColor.text,
+  );
   static AppTextStyle get bodySmall => AppTextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,

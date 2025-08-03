@@ -64,7 +64,7 @@ class LanguagePt implements Languages {
   @override
   String get loginButton => 'Entrar';
   @override
-  String get fullNameRequired => 'Nome completo é obrigatório';
+  String get nameRequired => 'Nome completo é obrigatório';
   @override
   String get emailRequired => 'E-mail é obrigatório';
   @override
@@ -80,4 +80,10 @@ class LanguagePt implements Languages {
   String get errorLoadingData => 'Erro ao carregar os dados';
   @override
   String get createAccount => 'Criar conta';
+  @override
+  String get registerButton => 'Registrar';
+  @override
+  String get backToLogin => 'Voltar para o Login';
+  @override
+  String get fullNameLabel => 'Nome completo';
 }

@@ -1,43 +1,46 @@
-import 'package:babylon/app/base/route_service.dart';
 import 'package:babylon/app/common/extension/string_extensions.dart';
-import 'package:flutter/material.dart';
-import 'package:babylon/app/base/base_model.dart';
 import 'package:babylon/app/common/service/notify/notify_service.dart';
+import 'package:flutter/material.dart';
 
-import '../../../core/constants/languages/languages.dart';
+import '../../../base/base_model.dart';
+import '../../../base/route_service.dart';
+import '../../../core/constants/languages/resources.dart';
 
-class LoginViewModel extends BaseModel {
+/// ViewModel para a feature 'Signup'.
+class SignupViewModel extends BaseModel {
   final formKey = GlobalKey<FormState>();
+
   final fullNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void goToSingUp() => Nav.goToSingUp();
-
   @override
   void notify({List<NotifyTypeEnum>? viewModels}) {
-    NotifyService.notify([NotifyTypeEnum.login, ...?viewModels]);
+    NotifyService.notify([NotifyTypeEnum.signup, ...?viewModels]);
   }
+
+  void goToLogin() => Nav.goToLogin();
 
   Future<void> loadData() async {
     setLoading();
     try {
-      await Future.delayed(const Duration(seconds: 1));
-      setSuccess();
+      // setSuccess();
     } catch (e) {
-      setError('${R.errorLoadingData}: $e');
+      setError('Erro ao carregar dados: $e');
     }
   }
 
   Future<void> submit() async {
     if (!formKey.currentState!.validate()) return;
+
     setLoading();
+
     try {
       await Future.delayed(const Duration(seconds: 2));
       setSuccess();
       Nav.goToHome();
     } catch (e) {
-      setError('${R.loginError}: $e');
+      //setError('${R.loginError}: $e');
     }
   }
 

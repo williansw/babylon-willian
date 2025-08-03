@@ -108,7 +108,7 @@ class CustomTextField extends StatefulWidget {
     this.autoValidateMode,
     this.expands = false,
     this.textAlign = TextAlign.start,
-    this.textAlignVertical,
+    this.textAlignVertical = TextAlignVertical.center,
     this.keyboardAppearance,
     this.counterText,
     this.showCursor = true,
@@ -192,7 +192,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         widget.hintStyle ??
         textTheme.bodyMedium?.copyWith(
           color: theme.hintColor,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
         );
     final effectiveLabelStyle =
         widget.labelStyle ??
@@ -204,10 +204,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         widget.errorStyle ??
         textTheme.bodySmall?.copyWith(color: theme.colorScheme.error);
 
-    // Toggle de senha
     final showPasswordToggle = widget.showPasswordToggle ?? widget.obscureText;
 
-    // Suffix icon com toggle de senha se necessário
     Widget? suffixIcon = widget.suffixIcon;
     if (showPasswordToggle) {
       suffixIcon = IconButton(
@@ -249,6 +247,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               hintStyle: effectiveHintStyle,
               helperText: widget.helperText,
               errorStyle: effectiveErrorStyle,
+              errorMaxLines: 2,
               contentPadding:
                   widget.contentPadding ??
                   const EdgeInsets.symmetric(
@@ -265,19 +264,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
               border:
                   widget.border ??
                   OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AppRadius.medium),
+                    borderRadius: BorderRadius.circular(AppRadius.small),
                     borderSide: BorderSide(color: theme.dividerColor, width: 1),
                   ),
               enabledBorder:
                   widget.enabledBorder ??
                   OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AppRadius.medium),
+                    borderRadius: BorderRadius.circular(AppRadius.small),
                     borderSide: BorderSide(color: theme.dividerColor, width: 1),
                   ),
               focusedBorder:
                   widget.focusedBorder ??
                   OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AppRadius.medium),
+                    borderRadius: BorderRadius.circular(AppRadius.small),
                     borderSide: BorderSide(
                       color: theme.colorScheme.primary,
                       width: 2,
@@ -286,7 +285,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               errorBorder:
                   widget.errorBorder ??
                   OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AppRadius.medium),
+                    borderRadius: BorderRadius.circular(AppRadius.small),
                     borderSide: BorderSide(
                       color: theme.colorScheme.error,
                       width: 1,
@@ -295,7 +294,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               disabledBorder:
                   widget.disabledBorder ??
                   OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AppRadius.medium),
+                    borderRadius: BorderRadius.circular(AppRadius.small),
                     borderSide: BorderSide(
                       color: theme.disabledColor,
                       width: 1,

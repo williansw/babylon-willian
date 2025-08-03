@@ -64,7 +64,7 @@ class LanguageEn implements Languages {
   @override
   String get loginButton => 'Login';
   @override
-  String get fullNameRequired => 'Full name is required';
+  String get nameRequired => 'Full name is required';
   @override
   String get emailRequired => 'Email is required';
   @override
@@ -79,6 +79,11 @@ class LanguageEn implements Languages {
   @override
   String get errorLoadingData => 'Error loading data';
   @override
-String get createAccount => 'Create Account';
-
+  String get createAccount => 'Create Account';
+  @override
+  String get registerButton => 'Register';
+  @override
+  String get backToLogin => 'Back to Login';
+  @override
+  String get fullNameLabel => 'Full Name';
 }

@@ -40,7 +40,7 @@ abstract class Languages {
   String get emailLabel;
   String get passwordLabel;
   String get loginButton;
-  String get fullNameRequired;
+  String get nameRequired;
   String get emailRequired;
   String get invalidEmail;
   String get passwordRequired;
@@ -48,4 +48,7 @@ abstract class Languages {
   String get loginError;
   String get errorLoadingData;
   String get createAccount;
+  String get registerButton;
+  String get backToLogin;
+  String get fullNameLabel;
 }

@@ -1,4 +1,5 @@
 import 'package:babylon/app/common/ui/components/widgets/base/custom_text_field.dart';
+import 'package:babylon/app/core/style/styte.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/languages/languages.dart';
@@ -25,6 +26,8 @@ class PasswordTextField extends StatelessWidget {
       onChanged: onChanged,
       obscureText: obscureText,
       labelText: R.passwordLabel,
+      filled: true,
+      fillColor: AppColor.white,
     );
   }
 }

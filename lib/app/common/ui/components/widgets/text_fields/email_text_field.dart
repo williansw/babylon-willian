@@ -18,17 +18,15 @@ class EmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return CustomTextField(
       controller: controller,
       validator: validator,
       onChanged: onChanged,
       keyboardType: TextInputType.emailAddress,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(AppRadius.medium),
-        borderSide: BorderSide(color: theme.dividerColor, width: 1),
-      ),
       labelText: R.emailLabel,
+      style: TextStyle(fontSize: 18),
+      filled: true,
+      fillColor: AppColor.white,
     );
   }
 }

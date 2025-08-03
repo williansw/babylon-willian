@@ -45,8 +45,6 @@ class _CustomScaffoldState extends State<CustomScaffold> {
   @override
   void didUpdateWidget(covariant CustomScaffold oldWidget) {
     super.didUpdateWidget(oldWidget);
-
-    // Erro como snackbar
     if (widget.viewModel.errorMessage != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         CustomScaffoldMessenger.show(
@@ -61,7 +59,6 @@ class _CustomScaffoldState extends State<CustomScaffold> {
       });
     }
 
-    // Info como snackbar
     if (widget.viewModel.infoMessage != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         CustomScaffoldMessenger.show(
@@ -82,7 +79,6 @@ class _CustomScaffoldState extends State<CustomScaffold> {
     return Scaffold(
       backgroundColor: widget.backgroundColor,
       appBar: widget.appBar,
-
       body: Stack(
         children: [
           Container(

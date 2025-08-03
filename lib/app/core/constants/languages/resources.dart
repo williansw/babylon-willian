@@ -38,7 +38,7 @@ class R {
   static String get emailLabel => _lang.emailLabel;
   static String get passwordLabel => _lang.passwordLabel;
   static String get loginButton => _lang.loginButton;
-  static String get fullNameRequired => _lang.fullNameRequired;
+  static String get nameRequired => _lang.nameRequired;
   static String get emailRequired => _lang.emailRequired;
   static String get invalidEmail => _lang.invalidEmail;
   static String get passwordRequired => _lang.passwordRequired;
@@ -46,4 +46,7 @@ class R {
   static String get loginError => _lang.loginError;
   static String get errorLoadingData => _lang.errorLoadingData;
   static String get createAccount => _lang.createAccount;
+  static String get registerButton => _lang.registerButton;
+  static String get backToLogin => _lang.backToLogin;
+  static String get fullNameLabel => _lang.fullNameLabel;
 }
