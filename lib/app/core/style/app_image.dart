@@ -10,5 +10,5 @@ class AppImage {
       _withPngExtension(imageName, 'png');
 
   //PNG ICONS
-  static final flagUs = _defaultPngPath('flag_us_icon');
+  static final babylonIcon = _defaultPngPath('babylon_icon');
 }

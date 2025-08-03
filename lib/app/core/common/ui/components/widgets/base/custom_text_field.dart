@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../../core/style/styte.dart';
+import '../../../../../style/styte.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;

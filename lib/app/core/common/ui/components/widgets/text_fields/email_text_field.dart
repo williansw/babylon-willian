@@ -1,21 +1,19 @@
-import 'package:babylon/app/common/ui/components/widgets/base/custom_text_field.dart';
-import 'package:babylon/app/core/style/styte.dart';
+import 'package:babylon/app/core/common/ui/components/components.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/languages/languages.dart';
+import '../../../../../constants/languages/resources.dart';
+import '../../../../../style/styte.dart';
 
-class PasswordTextField extends StatelessWidget {
+class EmailTextField extends StatelessWidget {
   final TextEditingController controller;
   final FormFieldValidator<String>? validator;
   final void Function(String)? onChanged;
-  final bool obscureText;
 
-  const PasswordTextField({
+  const EmailTextField({
     super.key,
     required this.controller,
     this.validator,
     this.onChanged,
-    this.obscureText = true,
   });
 
   @override
@@ -24,8 +22,9 @@ class PasswordTextField extends StatelessWidget {
       controller: controller,
       validator: validator,
       onChanged: onChanged,
-      obscureText: obscureText,
-      labelText: R.passwordLabel,
+      keyboardType: TextInputType.emailAddress,
+      labelText: R.emailLabel,
+      style: TextStyle(fontSize: 18),
       filled: true,
       fillColor: AppColor.white,
     );

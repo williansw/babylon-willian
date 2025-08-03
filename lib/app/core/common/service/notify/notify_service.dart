@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import '../../../core/exceptions/service/log_service.dart';
+import '../../../exceptions/service/log_service.dart';
 
 enum NotifyTypeEnum { splash, login, signup, home }
 

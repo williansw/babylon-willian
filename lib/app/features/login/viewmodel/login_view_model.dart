@@ -1,8 +1,8 @@
 import 'package:babylon/app/base/route_service.dart';
-import 'package:babylon/app/common/extension/string_extensions.dart';
+import 'package:babylon/app/core/common/extension/string_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:babylon/app/base/base_model.dart';
-import 'package:babylon/app/common/service/notify/notify_service.dart';
+import 'package:babylon/app/core/common/service/notify/notify_service.dart';
 
 import '../../../core/constants/languages/languages.dart';
 
@@ -12,12 +12,12 @@ class LoginViewModel extends BaseModel {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void goToSingUp() => Nav.goToSingUp();
-
   @override
   void notify({List<NotifyTypeEnum>? viewModels}) {
     NotifyService.notify([NotifyTypeEnum.login, ...?viewModels]);
   }
+
+  void goToSingUp() => Nav.goToSingUp();
 
   Future<void> loadData() async {
     setLoading();

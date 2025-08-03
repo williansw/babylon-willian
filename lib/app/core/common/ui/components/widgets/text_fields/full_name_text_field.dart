@@ -1,7 +1,7 @@
-import 'package:babylon/app/common/ui/components/components.dart';
+import 'package:babylon/app/core/common/ui/components/components.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/constants/languages/languages.dart';
-import '../../../../../core/style/styte.dart';
+import '../../../../../constants/languages/languages.dart';
+import '../../../../../style/styte.dart';
 
 class FullNameTextField extends StatelessWidget {
   final TextEditingController controller;

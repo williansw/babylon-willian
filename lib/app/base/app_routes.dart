@@ -4,6 +4,8 @@ import 'package:babylon/app/features/signup/viewmodel/signup_view_model.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../features/home/view/home_view.dart';
+import '../features/home/viewmodel/home_view_model.dart';
 import '../features/login/view/login_view.dart';
 import '../features/login/viewmodel/login_view_model.dart';
 import '../features/signup/view/signup_view.dart';
@@ -39,6 +41,18 @@ final GoRouter appRouter = GoRouter(
         child: Consumer<SignupViewModel>(
           builder: (context, viewModel, child) {
             return SignupView(viewModel: viewModel);
+          },
+        ),
+      ),
+    ),
+    GoRoute(
+      name: Routers.home,
+      path: Routers.home,
+      builder: (context, state) => ChangeNotifierProvider<HomeViewModel>(
+        create: (_) => getIt<HomeViewModel>(),
+        child: Consumer<HomeViewModel>(
+          builder: (context, viewModel, child) {
+            return HomeView(viewModel: viewModel);
           },
         ),
       ),

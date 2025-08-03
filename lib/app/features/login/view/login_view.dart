@@ -1,10 +1,10 @@
-import 'package:babylon/app/common/extension/widget_extensions.dart';
+import 'package:babylon/app/core/common/extension/widget_extensions.dart';
 import 'package:babylon/app/core/style/styte.dart';
 import 'package:flutter/material.dart';
-import '../../../common/ui/components/components.dart';
+import '../../../core/common/ui/components/components.dart';
 
-import '../../../common/ui/components/widgets/text_fields/email_text_field.dart';
-import '../../../common/ui/components/widgets/text_fields/password_text_field.dart';
+import '../../../core/common/ui/components/widgets/text_fields/email_text_field.dart';
+import '../../../core/common/ui/components/widgets/text_fields/password_text_field.dart';
 import '../../../core/constants/languages/languages.dart';
 import '../viewmodel/login_view_model.dart';
 

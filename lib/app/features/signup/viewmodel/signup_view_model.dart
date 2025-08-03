@@ -1,12 +1,12 @@
-import 'package:babylon/app/common/extension/string_extensions.dart';
-import 'package:babylon/app/common/service/notify/notify_service.dart';
+import 'package:babylon/app/core/common/extension/string_extensions.dart';
+import 'package:babylon/app/core/common/service/notify/notify_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../../base/base_model.dart';
 import '../../../base/route_service.dart';
 import '../../../core/constants/languages/resources.dart';
 
-/// ViewModel para a feature 'Signup'.
+/// ViewModel for the feature 'Signup'.
 class SignupViewModel extends BaseModel {
   final formKey = GlobalKey<FormState>();
 

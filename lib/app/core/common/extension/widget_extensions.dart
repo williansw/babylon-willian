@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/style/styte.dart';
+import '../../style/styte.dart';
 
 /// Adds vertical and horizontal spacing using a number.
 /// Example: 16.spaceV => SizedBox(height: 16)

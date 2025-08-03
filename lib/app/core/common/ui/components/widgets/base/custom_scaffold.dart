@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../base/base_model.dart';
-import '../../../../../core/style/app_color.dart';
+import '../../../../../../base/base_model.dart';
+import '../../../../../style/app_color.dart';
 import 'custom_circular_indicator.dart';
 import 'custom_scafold_message.dart';
 
