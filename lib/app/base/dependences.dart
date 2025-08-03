@@ -18,6 +18,7 @@ import '../data/user/use_case/user_use_case.dart';
 import '../features/home/viewmodel/home_view_model.dart';
 import '../features/login/viewmodel/login_view_model.dart';
 import '../features/signup/viewmodel/signup_view_model.dart';
+import '../features/splash/viewmodel/splash_view_model.dart';
 import 'app_routes.dart';
 
 final getIt = GetIt.instance;
@@ -49,6 +50,13 @@ void setupLocator() {
   );
   // ========== ViewModels ==========
 
+  getIt.registerFactory<SplashViewModel>(
+    () => SplashViewModel(
+      userUseCase: getIt<UserUseCase>(),
+      localStorageService: getIt<LocalStorageService>(),
+    ),
+  );
+
   getIt.registerFactory<LoginViewModel>(
     () => LoginViewModel(
       authUseCase: getIt<AuthUseCase>(),
@@ -70,5 +78,5 @@ void setupLocator() {
   // ========== Services ==========
   getIt.registerLazySingleton<LocateService>(() => LocateService());
   getIt.registerLazySingleton<FirebaseService>(() => FirebaseService());
-  getIt.registerLazySingleton<LocalStorageService>(() => LocalStorageService());
+  getIt.registerSingleton<LocalStorageService>(LocalStorageService());
 }

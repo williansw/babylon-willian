@@ -63,7 +63,7 @@ class LanguagePt implements Languages {
       'Ocorreu um erro ao cadastrar. Tente novamente.';
   //Screen
   @override
-  String get appName => 'Babylon - WILLIAN';
+  String get appName => 'Babylon';
   @override
   String hi(name) => 'Hi $name';
   @override

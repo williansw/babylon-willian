@@ -49,9 +49,9 @@ class LoginViewModel extends BaseModel {
           )
           .then((result) {
             return result.when(
-              (success) {
+              (success) async {
                 if (success.userCredential.user?.uid != null) {
-                  localStorageService.setString(
+                  await localStorageService.setString(
                     LocalStorageKeys.userId,
                     success.userCredential.user?.uid ?? '',
                   );

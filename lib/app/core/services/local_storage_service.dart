@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LocalStorageKeys {
   static const email = 'email';
   static const userId = 'user_id';
-  static const loginType = 'login_type';
 }
 
 class LocalStorageService {
@@ -14,7 +13,7 @@ class LocalStorageService {
 
   LocalStorageService._internal();
 
-  static Future<void> init() async {
+   Future<void> init() async {
     _prefs ??= await SharedPreferences.getInstance();
   }
 

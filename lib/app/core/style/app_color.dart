@@ -5,7 +5,7 @@ class AppColor {
   static const Color primary = Color(0xFF005C2C);
   static const Color secondary = Color(0xFFFF6D00);
   static const Color guest = Color(0xFF546E7A);
-  static const Color logoGreen = Color(0xFF00A843);
+  static const Color logoGreen = Color(0xFF008721);
 
   // Backgrounds
   static const Color background = Color(0xFFFdfaf5);

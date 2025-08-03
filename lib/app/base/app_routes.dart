@@ -9,6 +9,8 @@ import '../features/login/view/login_view.dart';
 import '../features/login/viewmodel/login_view_model.dart';
 import '../features/signup/view/signup_view.dart';
 import '../features/signup/viewmodel/signup_view_model.dart';
+import '../features/splash/view/splash_view.dart';
+import '../features/splash/viewmodel/splash_view_model.dart';
 
 class Routers {
   static const String splash = '/splash';
@@ -18,9 +20,21 @@ class Routers {
 }
 
 final GoRouter appRouter = GoRouter(
-  initialLocation: Routers.login,
+  initialLocation: Routers.splash,
 
   routes: <RouteBase>[
+    GoRoute(
+      name: Routers.splash,
+      path: Routers.splash,
+      builder: (context, state) => ChangeNotifierProvider<SplashViewModel>(
+        create: (_) => getIt<SplashViewModel>(),
+        child: Consumer<SplashViewModel>(
+          builder: (context, viewModel, child) {
+            return SplashView(viewModel: viewModel);
+          },
+        ),
+      ),
+    ),
     GoRoute(
       name: Routers.login,
       path: Routers.login,
