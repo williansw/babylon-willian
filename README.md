@@ -75,7 +75,7 @@ lib/
 
 ```bash
 git clone https://github.com/williansw/babylon-willian.git
-cd babylon
+cd babylon-willian
 flutter pub get
 ```
 
