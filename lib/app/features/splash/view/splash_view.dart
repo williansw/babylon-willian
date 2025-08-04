@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/common/ui/components/components.dart';
-import '../../../core/common/ui/components/widgets/base/app_version.dart';
 import '../../../core/common/ui/components/widgets/image/app_logo.dart';
 import '../../../core/style/styte.dart';
 import '../viewmodel/splash_view_model.dart';
