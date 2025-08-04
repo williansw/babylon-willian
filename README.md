@@ -74,8 +74,8 @@ lib/
 ### 🔧 Installation
 
 ```bash
-git clone https://github.com/your-username/babylon_app.git
-cd babylon_app
+git clone https://github.com/williansw/babylon-willian.git
+cd babylon
 flutter pub get
 ```
 
