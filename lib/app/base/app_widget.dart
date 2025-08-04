@@ -1,3 +1,4 @@
+// ignore_for_file: depend_on_referenced_packages
 import 'package:babylon/app/base/app_routes.dart';
 import 'package:babylon/app/base/dependences.dart';
 import 'package:babylon/app/core/style/styte.dart';

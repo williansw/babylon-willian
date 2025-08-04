@@ -21,6 +21,7 @@ class DrawerViewModel extends BaseModel {
     localStorageService.remove(LocalStorageKeys.userId);
     localStorageService.remove(LocalStorageKeys.email);
     userUseCase.setUser(null);
+    Nav.back();
     Nav.goToLogin();
   }
 

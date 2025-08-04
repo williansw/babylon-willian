@@ -79,28 +79,26 @@ class SignUpViewModel extends BaseModel {
 
   Future<bool> _createUser(String userId) async {
     setLoading();
+    var userModel = UserModel(
+      id: userId,
+      name: fullNameController.text.removeDiacritics.capitalized,
+      email: emailController.text.toLowerCase().removeDiacritics,
+      password: passwordController.text,
+      createdAt: DateTime.now(),
+    );
     try {
-      await userUseCase
-          .createUser(
-            user: UserModel(
-              id: userId,
-              name: fullNameController.text.removeDiacritics.capitalized,
-              email: emailController.text.toLowerCase().removeDiacritics,
-              password: passwordController.text,
-              createdAt: DateTime.now(),
-            ),
-          )
-          .then((result) {
-            return result.when(
-              (sucess) {
-                setSuccess();
-                Nav.goToHome();
-              },
-              (error) {
-                setError(R.genericErrorWithDetail(error.error));
-              },
-            );
-          });
+      await userUseCase.createUser(user: userModel).then((result) {
+        return result.when(
+          (sucess) {
+            userUseCase.setUser(userModel);
+            setSuccess();
+            Nav.goToHome();
+          },
+          (error) {
+            setError(R.genericErrorWithDetail(error.error));
+          },
+        );
+      });
       setSuccess();
     } catch (e) {
       setError(R.genericErrorWithDetail(e.toString()));
