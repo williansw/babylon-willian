@@ -1,5 +1,6 @@
 import 'package:babylon/app/base/dependences.dart';
 import 'package:babylon/app/base/navigator_service.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -21,57 +22,81 @@ class Routers {
 
 final GoRouter appRouter = GoRouter(
   initialLocation: Routers.splash,
-
+  observers: [GlobalNavigatorObserver()],
   routes: <RouteBase>[
-    GoRoute(
+    _fadeTransitionRoute(
       name: Routers.splash,
       path: Routers.splash,
-      builder: (context, state) => ChangeNotifierProvider<SplashViewModel>(
+      child: () => ChangeNotifierProvider(
         create: (_) => getIt<SplashViewModel>(),
         child: Consumer<SplashViewModel>(
-          builder: (context, viewModel, child) {
-            return SplashView(viewModel: viewModel);
-          },
+          builder: (context, viewModel, child) =>
+              SplashView(viewModel: viewModel),
         ),
       ),
     ),
-    GoRoute(
+    _fadeTransitionRoute(
       name: Routers.login,
       path: Routers.login,
-      builder: (context, state) => ChangeNotifierProvider<LoginViewModel>(
+      child: () => ChangeNotifierProvider(
         create: (_) => getIt<LoginViewModel>(),
         child: Consumer<LoginViewModel>(
-          builder: (context, viewModel, child) {
-            return LoginView(viewModel: viewModel);
-          },
+          builder: (context, viewModel, child) =>
+              LoginView(viewModel: viewModel),
         ),
       ),
     ),
-    GoRoute(
+    _fadeTransitionRoute(
       name: Routers.singup,
       path: Routers.singup,
-      builder: (context, state) => ChangeNotifierProvider<SignUpViewModel>(
+      child: () => ChangeNotifierProvider(
         create: (_) => getIt<SignUpViewModel>(),
         child: Consumer<SignUpViewModel>(
-          builder: (context, viewModel, child) {
-            return SignupView(viewModel: viewModel);
-          },
+          builder: (context, viewModel, child) =>
+              SignupView(viewModel: viewModel),
         ),
       ),
     ),
-    GoRoute(
+    _fadeTransitionRoute(
       name: Routers.home,
       path: Routers.home,
-      builder: (context, state) => ChangeNotifierProvider<HomeViewModel>(
+      child: () => ChangeNotifierProvider(
         create: (_) => getIt<HomeViewModel>(),
         child: Consumer<HomeViewModel>(
-          builder: (context, viewModel, child) {
-            return HomeView(viewModel: viewModel);
-          },
+          builder: (context, viewModel, child) =>
+              HomeView(viewModel: viewModel),
         ),
       ),
     ),
   ],
-
-  observers: [GlobalNavigatorObserver()],
 );
+
+GoRoute _fadeTransitionRoute({
+  required String name,
+  required String path,
+  required Widget Function() child,
+}) {
+  return GoRoute(
+    name: name,
+    path: path,
+    pageBuilder: (context, state) {
+      return CustomTransitionPage(
+        key: state.pageKey,
+        child: child(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          final slide = Tween<Offset>(
+            begin: const Offset(0.0, 0.05),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut));
+
+          final fade = Tween<double>(begin: 0, end: 1).animate(animation);
+
+          return SlideTransition(
+            position: slide,
+            child: FadeTransition(opacity: fade, child: child),
+          );
+        },
+      );
+    },
+  );
+}

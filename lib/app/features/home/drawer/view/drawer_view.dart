@@ -3,6 +3,7 @@ import 'package:babylon/app/core/common/ui/components/widgets/base/custom_text.d
 import 'package:flutter/material.dart';
 
 import '../../../../base/dependences.dart';
+import '../../../../core/common/ui/components/widgets/base/app_version.dart';
 import '../../../../core/common/ui/components/widgets/image/app_logo.dart';
 import '../../../../core/common/ui/components/widgets/text/app_name.dart';
 import '../../../../core/constants/languages/languages.dart';
@@ -52,6 +53,8 @@ class AppSidebarDrawer extends StatelessWidget {
                 label: R.logout,
                 onTap: viewModel.onLogout,
               ),
+              const SizedBox(height: Spacing.x2),
+              AppVersionInfo().centered,
               const SizedBox(height: Spacing.x2),
             ],
           ),
