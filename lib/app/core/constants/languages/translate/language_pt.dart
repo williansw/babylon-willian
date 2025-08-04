@@ -2,6 +2,11 @@ import '../languages.dart';
 
 class LanguagePt implements Languages {
   @override
+  String get devName => 'Willian Oliveira';
+  @override
+  String get devBio =>
+      'Engenheiro Mobile Sênior (Flutter/Dart) | Mais de 10 anos em TI | Criando Aplicativos Inovadores';
+  @override
   String genericErrorWithDetail(String detail) => 'Ocorreu um erro: $detail';
   //AppRoutes
   @override
@@ -108,4 +113,8 @@ class LanguagePt implements Languages {
 
   @override
   String get genericError => 'Ocorreu um erro inesperado. Tente novamente.';
+  @override
+  String hiUser(String name) => 'Ei, $name! Você entrou com sucesso.';
+  @override
+  String get logout => 'Deslogar';
 }

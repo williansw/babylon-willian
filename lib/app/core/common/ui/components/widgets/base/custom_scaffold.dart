@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../../base/base_model.dart';
+import '../../../../../../features/home/drawer/view/drawer_view.dart';
 import '../../../../../style/app_color.dart';
 import 'custom_circular_indicator.dart';
 import 'custom_scafold_message.dart';
@@ -8,6 +9,7 @@ typedef NotificationBuilder =
     Widget Function(BuildContext context, String message);
 
 class CustomScaffold extends StatefulWidget {
+  final bool showDrawer;
   final BaseModel viewModel;
   final VoidCallback? onErrorClose;
   final VoidCallback? onInfoClose;
@@ -19,10 +21,12 @@ class CustomScaffold extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
 
   const CustomScaffold({
     super.key,
+    this.showDrawer = false,
     this.onInfoClose,
     this.errorBuilder,
     this.onErrorClose,
@@ -35,6 +39,7 @@ class CustomScaffold extends StatefulWidget {
     this.bottomNavigationBar,
     this.floatingActionButton,
     this.floatingActionButtonLocation,
+    this.scaffoldKey,
   });
 
   @override
@@ -77,7 +82,9 @@ class _CustomScaffoldState extends State<CustomScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: widget.scaffoldKey,
       backgroundColor: widget.backgroundColor,
+      drawer: widget.showDrawer ? AppSidebarDrawer() : null,
       appBar: widget.appBar,
       body: Stack(
         children: [

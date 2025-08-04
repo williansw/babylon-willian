@@ -5,9 +5,11 @@ import 'package:babylon/app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../core/constants/languages/deletate/language_delegate.dart';
 import '../core/constants/languages/languages.dart';
 import '../core/services/locate_service.dart';
 import '../features/login/viewmodel/login_view_model.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
@@ -20,13 +22,13 @@ class App extends StatelessWidget {
     final locateService = getIt<LocateService>();
     return ChangeNotifierProvider.value(
       value: locateService,
-      child: Consumer<LocateService>(
-        builder: (context, locateService, _) {
-          return MultiProvider(
-            providers: [
-              ChangeNotifierProvider(create: (_) => getIt<LoginViewModel>()),
-            ],
-            child: MaterialApp.router(
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => getIt<LoginViewModel>()),
+        ],
+        child: Consumer<LocateService>(
+          builder: (context, languageService, _) {
+            return MaterialApp.router(
               scaffoldMessengerKey: scaffoldMessengerKey,
               builder: (context, child) {
                 return MediaQuery(
@@ -41,7 +43,14 @@ class App extends StatelessWidget {
               title: R.appName,
               routerConfig: appRouter,
               debugShowCheckedModeBanner: false,
-              locale: locateService.locale,
+              locale: languageService.locale,
+              supportedLocales: languageService.supportedLocales,
+              localizationsDelegates: [
+                LanguageDelegate(),
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
               theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(
                   seedColor: AppColor.secondary,
@@ -54,9 +63,9 @@ class App extends StatelessWidget {
                   },
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

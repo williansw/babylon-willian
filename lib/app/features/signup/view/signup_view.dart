@@ -80,7 +80,10 @@ class _SingUpForm extends StatelessWidget {
   );
 
   Widget get loginButton => TextButton(
-    child: CustomText(R.backToLogin, style: AppTextStyle.labelLarge),
+    child: CustomText.translated(
+      () => R.backToLogin,
+      style: AppTextStyle.labelLarge,
+    ),
     onPressed: () => viewModel.goToLogin(),
   );
 }

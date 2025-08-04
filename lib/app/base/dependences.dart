@@ -15,6 +15,7 @@ import '../data/user/data/user_data_source_imp.dart';
 import '../data/user/repository/user_repository.dart';
 import '../data/user/repository/user_repository_imp.dart';
 import '../data/user/use_case/user_use_case.dart';
+import '../features/home/drawer/view_model/drawer_view_model.dart';
 import '../features/home/viewmodel/home_view_model.dart';
 import '../features/login/viewmodel/login_view_model.dart';
 import '../features/signup/viewmodel/signup_view_model.dart';
@@ -73,7 +74,16 @@ void setupLocator() {
       localStorageService: getIt<LocalStorageService>(),
     ),
   );
-  getIt.registerFactory<HomeViewModel>(() => HomeViewModel());
+  getIt.registerFactory<HomeViewModel>(
+    () => HomeViewModel(userUseCase: getIt<UserUseCase>()),
+  );
+
+  getIt.registerFactory<DrawerViewModel>(
+    () => DrawerViewModel(
+      userUseCase: getIt<UserUseCase>(),
+      localStorageService: getIt<LocalStorageService>(),
+    ),
+  );
 
   // ========== Services ==========
   getIt.registerLazySingleton<LocateService>(() => LocateService());

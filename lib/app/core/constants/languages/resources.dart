@@ -6,6 +6,9 @@ class R {
     _lang = language ?? LanguageEn();
   }
 
+  static String get devName => _lang.devName;
+  static String get devBio => _lang.devBio;
+
   static String genericErrorWithDetail(detail) =>
       _lang.genericErrorWithDetail(detail);
   static String get genericError => _lang.genericError;
@@ -60,4 +63,6 @@ class R {
   static String get signupGenericError => _lang.signupGenericError;
   static String get signupMissingEmailOrPassword =>
       _lang.signupMissingEmailOrPassword;
+  static String hiUser(String name) => _lang.hiUser(name);
+  static String get logout => _lang.logout;
 }

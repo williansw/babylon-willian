@@ -1,8 +1,12 @@
 import '../languages.dart';
 
 class LanguageEn implements Languages {
+  @override
+  String get devName => 'Willian Oliveira';
+  @override
+  String get devBio =>
+      'Senior Mobile Engineer (Flutter/Dart) | 10+ Years in IT | Building Innovative Apps';
   //AppRoutes
-
   @override
   String genericErrorWithDetail(String detail) => 'An error occurred: $detail';
   @override
@@ -109,4 +113,8 @@ class LanguageEn implements Languages {
   String get signupMissingEmailOrPassword => 'Email or password not provided';
   @override
   String get genericError => 'An unexpected error occurred. Please try again.';
+  @override
+  String hiUser(String name) => 'Hey, $name! You’re successfully logged in.';
+  @override
+  String get logout => 'Logout';
 }

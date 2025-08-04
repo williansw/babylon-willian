@@ -1,8 +1,15 @@
+import 'package:babylon/app/features/login/viewmodel/login_view_model.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../../../base/dependences.dart';
+import '../../../../features/home/drawer/view_model/drawer_view_model.dart';
+import '../../../../features/home/viewmodel/home_view_model.dart';
+import '../../../../features/signup/viewmodel/signup_view_model.dart';
+import '../../../../features/splash/viewmodel/splash_view_model.dart';
 import '../../../exceptions/service/log_service.dart';
+import '../../../services/locate_service.dart';
 
-enum NotifyTypeEnum { splash, login, signup, home }
+enum NotifyTypeEnum { splash, login, signup, home, drawer, language }
 
 class NotifyService extends ChangeNotifier {
   NotifyService._();
@@ -19,16 +26,22 @@ class NotifyService extends ChangeNotifier {
     for (var type in viewModels) {
       switch (type) {
         case NotifyTypeEnum.splash:
-          //getIt<SplashViewModel>().notifyListeners();
+          getIt<SplashViewModel>().notifyListeners();
           break;
         case NotifyTypeEnum.login:
-          //getIt<SignUpViewModel>().notifyListeners();
+          getIt<LoginViewModel>().notifyListeners();
           break;
         case NotifyTypeEnum.signup:
-          //getIt<SignUpViewModel>().notifyListeners();
+          getIt<SignUpViewModel>().notifyListeners();
           break;
         case NotifyTypeEnum.home:
-          //getIt<HomeViewModel>().notifyListeners();
+          getIt<HomeViewModel>().notifyListeners();
+          break;
+        case NotifyTypeEnum.drawer:
+          getIt<DrawerViewModel>().notifyListeners();
+          break;
+        case NotifyTypeEnum.language:
+          getIt<LocateService>().notifyListeners();
           break;
       }
     }

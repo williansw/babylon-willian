@@ -7,8 +7,11 @@ abstract class Languages {
     return Localizations.of<Languages>(context, Languages);
   }
 
+  String hiUser(String name);
   String notify(String name);
   String genericErrorWithDetail(String detail);
+  String get devName;
+  String get devBio;
   String get genericError;
   //AppRoutes
   String get routePopped;
@@ -61,4 +64,5 @@ abstract class Languages {
   String get backToLogin;
   String get fullNameLabel;
   String get signupMissingEmailOrPassword;
+  String get logout;
 }

@@ -77,7 +77,10 @@ class _LoginForm extends StatelessWidget {
   );
 
   Widget get signUpButton => TextButton(
-    child: CustomText(R.createAccount, style: AppTextStyle.labelLarge),
+    child: CustomText.translated(
+      () => R.createAccount,
+      style: AppTextStyle.labelLarge,
+    ),
     onPressed: () => viewModel.goToSingUp(),
   );
 }

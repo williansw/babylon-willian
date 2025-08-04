@@ -1,11 +1,11 @@
 import 'package:babylon/app/core/common/extension/effects.dart';
 import 'package:babylon/app/core/common/extension/widget_extensions.dart';
-import 'package:babylon/app/core/common/ui/components/widgets/base/custom_imagem.dart';
+import 'package:babylon/app/core/common/ui/components/widgets/text/app_name.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/common/ui/components/components.dart';
-import '../../../core/constants/languages/languages.dart';
+import '../../../core/common/ui/components/widgets/image/app_logo.dart';
 import '../../../core/style/styte.dart';
 import '../viewmodel/splash_view_model.dart';
 
@@ -38,24 +38,9 @@ class _SplashViewState extends State<SplashView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomAssetImage(
-                  height: 160,
-                  width: 160,
-                  imageName: AppImage.babylonIcon,
-                ).pulse(),
+                AppLogoIcon(size: Spacing.x16).pulse(),
                 Spacing.x4.spaceV,
-                Text(
-                  R.appName.toUpperCase(),
-                  style: AppTextStyle.displayLarge
-                      .copyWith(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 40,
-                        color: AppColor.logoGreen,
-                        letterSpacing: 1.5,
-                      )
-                      .style,
-                  textAlign: TextAlign.center,
-                ),
+                AppName(),
               ],
             ).padAll(Spacing.x4),
           ),
