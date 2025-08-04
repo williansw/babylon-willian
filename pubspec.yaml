@@ -1,6 +1,6 @@
 name: babylon
 description: "Babylon-Willian-Test"
-version: 1.0.0+1
+version: 1.0.0+2
 environment:
   sdk: ^3.8.0
 
