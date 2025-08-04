@@ -81,14 +81,28 @@ flutter pub get
 
 ### 🔐 Firebase Setup
 
-1. Go to [Firebase Console](https://console.firebase.google.com/)
-2. Create a new project
-3. Enable **Email/Password** authentication
-4. Download `google-services.json` and `GoogleService-Info.plist`
-5. Add them to:
+1. Acesse o [Firebase Console](https://console.firebase.google.com/)
 
-   * `android/app/` for Android
-   * `ios/Runner/` for iOS
+2. Crie um novo projeto (ou use um existente)
+
+3. Ative a autenticação por **Email/Senha**
+
+4. Baixe os arquivos de configuração:
+
+   * `google-services.json` (para Android)
+   * `GoogleService-Info.plist` (para iOS)
+
+5. Adicione-os nos seguintes caminhos:
+
+```
+📱 Android:
+→ Coloque o arquivo em: android/app/google-services.json
+
+🍏 iOS:
+→ Coloque o arquivo em: ios/Runner/GoogleService-Info.plist
+```
+
+> ⚠️ Esses arquivos estão no `.gitignore` por segurança e **não são versionados**. Certifique-se de incluí-los **localmente** antes de rodar o app.
 
 ---
 
