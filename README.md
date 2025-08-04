@@ -1,33 +1,34 @@
 # 📱 Babylon App
 
-Welcome to **Babylon**, a Flutter application developed as part of a technical assessment for **Babylon Radio**. This app demonstrates best practices in Flutter development using clean architecture (MVVM), Firebase Authentication, localization, dependency injection, and a modular design system.
+Welcome to **Babylon**, a Flutter application developed as part of a technical assessment for **Babylon Radio**. This app showcases best practices in Flutter development using clean architecture (MVVM), Firebase Authentication, runtime localization, dependency injection, and a modular design system.
 
 ---
 
 ## ✨ Features
 
-* ✅ Firebase Authentication (Email & Password)
-* ✅ User Registration and Login
-* ✅ Persistent Authentication
-* ✅ Localization: 🇬🇧 English & 🇧🇷 Portuguese
-* ✅ MVVM Architecture
-* ✅ Dependency Injection with `get_it`
-* ✅ Custom Design System (colors, spacing, styles, widgets)
-* ✅ Splash screen with animated logo
-* ✅ Responsive UI and dark mode ready
-* ✅ Code separation for reusability and testability
+* ✅ Firebase Authentication (Email & Password)  
+* ✅ User Registration and Login  
+* ✅ Persistent Authentication  
+* ✅ Localization: 🇬🇧 English & 🇧🇷 Portuguese  
+* ✅ MVVM Architecture  
+* ✅ Dependency Injection with `get_it`  
+* ✅ Custom Design System (colors, spacing, styles, widgets)  
+* ✅ Splash screen with animated logo  
+* ✅ Responsive UI and dark mode support  
+* ✅ Modular code for reusability and maintainability  
 
 ---
 
 ## 📁 Folder Structure
 
 ```
+
 lib/
 ├── app/
 │   ├── features/
 │   │   ├── login/
-│   │   │   ├── view/login_view.dart
-│   │   │   ├── viewmodel/login_view_model.dart
+│   │   │   ├── view/login\_view\.dart
+│   │   │   ├── viewmodel/login\_view\_model.dart
 │   │   │   └── widgets/...
 │   │   ├── home/
 │   │   └── splash/
@@ -45,18 +46,19 @@ lib/
 │   │   ├── navigator/
 │   │   └── base/
 ├── main.dart
-```
+
+````
 
 ---
 
 ## 🔧 Technologies Used
 
 | Technology         | Purpose                         |
-| ------------------ | ------------------------------- |
+|--------------------|---------------------------------|
 | Flutter            | Cross-platform UI toolkit       |
 | Firebase Auth      | User authentication             |
 | Provider           | State management (view updates) |
-| get\_it            | Dependency Injection            |
+| get_it             | Dependency Injection            |
 | MVVM               | Scalable architecture           |
 | Dart Extension     | Clean reusable code             |
 | Modular Components | Buttons, TextFields, Icons      |
@@ -67,9 +69,8 @@ lib/
 
 ### ✅ Prerequisites
 
-* Flutter >= 3.16.9
-* Dart >= 3.2.0
-* Firebase Project setup
+* Flutter >= 3.16.9  
+* Dart >= 3.2.0  
 
 ### 🔧 Installation
 
@@ -77,44 +78,39 @@ lib/
 git clone https://github.com/williansw/babylon-willian.git
 cd babylon-willian
 flutter pub get
+````
+
+---
+
+## 🔐 Firebase Setup
+
+To run the app with Firebase Authentication enabled, you need to download and include the configuration file:
+
+📱 **Android**:
+
+→ Download the file from the following link:
+
+[google-services.json](https://drive.google.com/file/d/1cUCQmOwoH1z6pj_Pvhigsoj5oBVSu9Px/view?usp=sharing)
+
+→ Then, place it in the following directory:
+
+```
+babylon/android/app/google-services.json
 ```
 
-### 🔐 Firebase Setup
-
-1. Acesse o [Firebase Console](https://console.firebase.google.com/)
-
-2. Crie um novo projeto (ou use um existente)
-
-3. Ative a autenticação por **Email/Senha**
-
-4. Baixe os arquivos de configuração:
-
-   * `google-services.json` (para Android)
-   * `GoogleService-Info.plist` (para iOS)
-
-5. Adicione-os nos seguintes caminhos:
-
-```
-📱 Android:
-→ Coloque o arquivo em: android/app/google-services.json
-
-🍏 iOS:
-→ Coloque o arquivo em: ios/Runner/GoogleService-Info.plist
-```
-
-> ⚠️ Esses arquivos estão no `.gitignore` por segurança e **não são versionados**. Certifique-se de incluí-los **localmente** antes de rodar o app.
+> ⚠️ This file is excluded from the repository via `.gitignore` for security reasons and must be added locally before running the app.
 
 ---
 
 ## 🌍 Localization
 
-The app supports **English** and **Portuguese**, with a `LanguageSelector` widget to change languages at runtime.
+The app supports **English** and **Portuguese**, with a `LanguageSelector` widget that allows users to switch languages at runtime.
 
 ```dart
-// Languages Enum
+// Language enum
 enum LanguageEnum { english, portuguese }
 
-// Use via R object
+// Usage via R object
 Text(R.loginButton)
 ```
 
@@ -122,12 +118,12 @@ Text(R.loginButton)
 
 ## 🧠 Architecture
 
-We follow the **MVVM pattern**, separated by:
+The application is structured using the **MVVM (Model-View-ViewModel)** pattern, ensuring a clean and scalable codebase:
 
-* `View` (Widgets only)
-* `ViewModel` (Logic, Provider-based)
-* `Model` (Entities or DTOs)
-* `Service` (Abstracted logic: Firebase, Localization, etc)
+* `View` – UI widgets only
+* `ViewModel` – Logic and state (Provider-based)
+* `Model` – Entities and DTOs
+* `Service` – Firebase, localization, etc.
 
 ---
 
@@ -148,33 +144,33 @@ void setupLocator() {
 
 ## 🔐 Authentication Flow
 
-* New users are registered using **email, password and full name**
-* Firebase stores credentials and returns a `User`
-* Logged-in users are redirected to the Home screen
-* Logout via `FirebaseAuth.instance.signOut()`
+* New users can register using **email, password, and full name**
+* Firebase securely stores credentials
+* Authenticated users are redirected to the Home screen
+* Users can log out via `FirebaseAuth.instance.signOut()`
 
 ---
 
 ## 🎨 Design System
 
-The app uses a central theme for:
+The app uses a centralized design system to ensure consistency across components:
 
-* Colors (`AppColor`)
-* Spacing (`Spacing`)
-* Typography (`AppTextStyle`)
-* Reusable widgets (`CustomButton`, `AppLogoIcon`, `AppLogoText`, etc.)
+* Colors – `AppColor`
+* Spacing – `Spacing`
+* Typography – `AppTextStyle`
+* Custom widgets – `CustomButton`, `AppLogoIcon`, `AppLogoText`, etc.
 
 ---
 
-## 🧪 Testing
+## 🧪 Manual Testing
 
-The app was tested manually for:
+The application has been manually tested for the following flows:
 
-* ✅ New user registration
-* ✅ Existing user login
-* ✅ Logout & session invalidation
+* ✅ User registration
+* ✅ Login
+* ✅ Logout and session management
 * ✅ Language switching
-* ✅ UI responsiveness
+* ✅ UI responsiveness on multiple devices
 
 ---
 
@@ -182,7 +178,7 @@ The app was tested manually for:
 
 **Willian Oliveira**
 Flutter Developer
-[LinkedIn](https://www.linkedin.com/in/willian-natieres-67109934/) | [GitHub](https://github.com/williansw)
+[LinkedIn](https://www.linkedin.com/in/willian-natieres-67109934/) • [GitHub](https://github.com/williansw)
 
 ---
 
