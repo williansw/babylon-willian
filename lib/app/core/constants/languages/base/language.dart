@@ -65,4 +65,5 @@ abstract class Languages {
   String get fullNameLabel;
   String get signupMissingEmailOrPassword;
   String get logout;
+  String get firebaseGenericError;
 }

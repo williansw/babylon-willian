@@ -117,4 +117,7 @@ class LanguagePt implements Languages {
   String hiUser(String name) => 'Ei, $name! Você entrou com sucesso.';
   @override
   String get logout => 'Deslogar';
+  @override
+  String get firebaseGenericError =>
+      'Verifique os dados digitados e tente novamente.';
 }

@@ -18,8 +18,8 @@ class FirebaseService {
       return R.signupWrongPassword;
     }
     if (error.contains('unknown-error')) {
-      return R.genericError;
+      return R.firebaseGenericError;
     }
-    return R.genericError;
+    return R.firebaseGenericError;
   }
 }

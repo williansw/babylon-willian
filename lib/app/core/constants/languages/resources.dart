@@ -65,4 +65,5 @@ class R {
       _lang.signupMissingEmailOrPassword;
   static String hiUser(String name) => _lang.hiUser(name);
   static String get logout => _lang.logout;
+  static String get firebaseGenericError => _lang.firebaseGenericError;
 }

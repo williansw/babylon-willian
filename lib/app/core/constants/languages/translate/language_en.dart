@@ -117,4 +117,6 @@ class LanguageEn implements Languages {
   String hiUser(String name) => 'Hey, $name! You’re successfully logged in.';
   @override
   String get logout => 'Logout';
+  @override
+  String get firebaseGenericError => 'Please check your input and try again.';
 }
