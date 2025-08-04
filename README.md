@@ -106,14 +106,6 @@ Text(R.loginButton)
 
 ---
 
-## 📸 Screenshots
-
-| Splash                                   | Login                                  | Home                                 |
-| ---------------------------------------- | -------------------------------------- | ------------------------------------ |
-| ![splash](assets/screenshots/splash.png) | ![login](assets/screenshots/login.png) | ![home](assets/screenshots/home.png) |
-
----
-
 ## 🧠 Architecture
 
 We follow the **MVVM pattern**, separated by:
@@ -176,7 +168,7 @@ The app was tested manually for:
 
 **Willian Oliveira**
 Flutter Developer
-[LinkedIn](https://www.linkedin.com/in/seu-perfil/) | [GitHub](https://github.com/seu-usuario)
+[LinkedIn](https://www.linkedin.com/in/willian-natieres-67109934/) | [GitHub](https://github.com/williansw)
 
 ---
 
