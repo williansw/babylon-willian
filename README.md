@@ -1,187 +1,136 @@
-# 📱 Babylon App
+# 🧾 SW PDV 
 
-Welcome to **Babylon**, a Flutter application developed as part of a technical assessment for **Babylon Radio**. This app showcases best practices in Flutter development using clean architecture (MVVM), Firebase Authentication, runtime localization, dependency injection, and a modular design system.
+**SW PDV** é um aplicativo Flutter robusto e modular, desenvolvido para atender estabelecimentos como restaurantes, padarias e afins. Possui uma arquitetura limpa baseada no padrão MVVM, suporte a múltiplos dispositivos, e integração com serviços essenciais como impressão, pagamento.
+
+
+---
+## 🎨 Guideline e Projeto no Figma
+
+- 📐 [Acessar Guideline](https://www.figma.com/design/Twv5hhdBUgoeGNffnJTjIs/PDV-M%C3%93VEL?node-id=785-5436&p=f&t=eHRvlSKkj8qYFrg4-0)  
+- 🎨 [Acessar Projeto Completo no Figma](https://www.figma.com/design/Twv5hhdBUgoeGNffnJTjIs/PDV-M%C3%93VEL?node-id=0-1&p=f&t=eHRvlSKkj8qYFrg4-0)
+
 
 ---
 
-## ✨ Features
+## ✨ Funcionalidades
 
-* ✅ Firebase Authentication (Email & Password)  
-* ✅ User Registration and Login  
-* ✅ Persistent Authentication  
-* ✅ Localization: 🇬🇧 English & 🇧🇷 Portuguese  
-* ✅ MVVM Architecture  
-* ✅ Dependency Injection with `get_it`  
-* ✅ Custom Design System (colors, spacing, styles, widgets)  
-* ✅ Splash screen with animated logo  
-* ✅ Responsive UI and dark mode support  
-* ✅ Modular code for reusability and maintainability  
+✅ Arquitetura modular baseada em features  
+✅ Padrão MVVM para escalabilidade e testabilidade  
+✅ Sistema de design customizado com tema, espaçamento e tipografia  
+✅ Suporte a atendimento por mesas e balcão  
+✅ Fluxo completo de pedidos, transferências e cancelamentos  
+✅ Catálogo de produtos com adicionais e observações  
+✅ Gerenciamento dinâmico de configurações  
+✅ Camada interna de serviços e modelagem de domínio  
+✅ Integração de impressão e pagamento (via pacotes internos da SW)  
+✅ Localização e tema centralizados
 
 ---
 
-## 📁 Folder Structure
+## 🧱 Estrutura do Projeto
 
+```txt
+lib/
+├── apps/
+│   ├── base/                # Inicialização, rotas e módulos do app
+│   ├── common/              # Componentes, serviços e domínio compartilhado
+│   ├── features/            # Funcionalidades de negócio (pedido, catálogo, etc.)
+│   │   ├── order_place/     # Gestão de mesas e comanda
+│   │   ├── catalog/         # Produtos, transferências, etc.
+│   │   ├── payment/         # Fluxo de pagamento
+│   │   └── printer/         # Integração com impressoras
+├── main.dart                # Ponto de entrada do app
 ```
 
-lib/
-├── app/
-│   ├── features/
-│   │   ├── login/
-│   │   │   ├── view/login\_view\.dart
-│   │   │   ├── viewmodel/login\_view\_model.dart
-│   │   │   └── widgets/...
-│   │   ├── home/
-│   │   └── splash/
-│   ├── core/
-│   │   ├── common/
-│   │   │   ├── extension/
-│   │   │   ├── service/
-│   │   │   ├── ui/components/
-│   │   │   └── ui/widgets/
-│   │   ├── constants/
-│   │   │   ├── images/
-│   │   │   ├── languages/
-│   │   │   └── values/
-│   │   ├── style/
-│   │   ├── navigator/
-│   │   └── base/
-├── main.dart
+### 📁 Camada de Features (Padrão MVVM)
 
-````
+Cada funcionalidade segue o padrão MVVM com separação clara de responsabilidades:
+
+```txt
+└── order_place/
+    ├── data/                # DTOs e repositórios
+    ├── domain/              # Casos de uso e entidades
+    ├── presentation/        # Telas e ViewModels
+    └── service/             # Utilitários específicos do domínio
+```
 
 ---
 
-## 🔧 Technologies Used
+## 📦 Pacotes Internos
 
-| Technology         | Purpose                         |
-|--------------------|---------------------------------|
-| Flutter            | Cross-platform UI toolkit       |
-| Firebase Auth      | User authentication             |
-| Provider           | State management (view updates) |
-| get_it             | Dependency Injection            |
-| MVVM               | Scalable architecture           |
-| Dart Extension     | Clean reusable code             |
-| Modular Components | Buttons, TextFields, Icons      |
+O projeto depende de pacotes internos da SW localizados em `../../Flutter_Packages/`, necessários para integração com os SDKs:
+
+- `sw_packages`: Componentes e utilitários centrais
+- `sw_payments`: Integração com sistema de pagamento
+- `sw_printers`: Integração com impressoras
+
+> ⚠️ Certifique-se de clonar os pacotes no caminho correto, conforme indicado no `pubspec.yaml`.
 
 ---
 
-## 🚀 Getting Started
+## 🔧 Tecnologias Utilizadas
 
-### ✅ Prerequisites
+| Ferramenta             | Finalidade                            |
+|------------------------|----------------------------------------|
+| Flutter                | Desenvolvimento multiplataforma        |
+| Modular                | Navegação e injeção de dependências    |
+| Provider               | Gerenciamento de estado                |
+| Dio                    | Requisições HTTP                       |
+| SignalR                | Comunicação em tempo real              |
 
-* Flutter >= 3.16.9  
-* Dart >= 3.2.0  
 
-### 🔧 Installation
+---
+
+## 📜 Arquitetura
+
+O app utiliza **Clean Architecture + MVVM**, com as seguintes camadas:
+
+- **Model** – Entidades principais e objetos de valor
+- **ViewModel** – Lógica e estado, utilizando casos de uso
+- **View** – Interface do usuário (UI)
+- **UseCase** – Regras de negócio
+- **Repository** – Abstração das fontes de dados
+- **Service** – Classes auxiliares e serviços internos
+
+---
+
+## 🚀 Como Começar
+
+### Pré-requisitos
+
+- Flutter `>=3.4.0 <4.0.0`
+- Dart `>=3.4.0`
+- Repositórios internos no mesmo nível:
+
+```txt
+/repos/
+├── Suite_POS
+└── Flutter_Packages/
+    ├── sw_packages
+    ├── sw_payments
+    └── sw_printers
+```
+
+### Instalação
 
 ```bash
-git clone https://github.com/williansw/babylon-willian.git
-cd babylon-willian
+git clone https://swfast.visualstudio.com/Tribe%20Master/_git/Suite_POS
+cd Suite_POS
 flutter pub get
-````
-
----
-
-## 🔐 Firebase Setup
-
-To run the app with Firebase Authentication enabled, you need to download and include the configuration file:
-
-📱 **Android**:
-
-→ Download the file from the following link:
-
-[google-services.json](https://drive.google.com/file/d/1cUCQmOwoH1z6pj_Pvhigsoj5oBVSu9Px/view?usp=sharing)
-
-→ Then, place it in the following directory:
-
-```
-babylon/android/app/google-services.json
-```
-
-> ⚠️ This file is excluded from the repository via `.gitignore` for security reasons and must be added locally before running the app.
-
----
-
-## 🌍 Localization
-
-The app supports **English** and **Portuguese**, with a `LanguageSelector` widget that allows users to switch languages at runtime.
-
-```dart
-// Language enum
-enum LanguageEnum { english, portuguese }
-
-// Usage via R object
-Text(R.loginButton)
+flutter run
 ```
 
 ---
 
-## 🧠 Architecture
+## 🌍 Localização e Design
 
-The application is structured using the **MVVM (Model-View-ViewModel)** pattern, ensuring a clean and scalable codebase:
+O projeto conta com:
 
-* `View` – UI widgets only
-* `ViewModel` – Logic and state (Provider-based)
-* `Model` – Entities and DTOs
-* `Service` – Firebase, localization, etc.
+- Tokens de design centralizados em `common/presentation/constants`
+- Gerenciamento de cores, fontes e espaçamentos
+- Suporte a múltiplos idiomas
+- Componentes reutilizáveis personalizados
 
----
+## 📄 Licença
 
-## 💉 Dependency Injection
-
-All core services are injected using [`get_it`](https://pub.dev/packages/get_it):
-
-```dart
-final getIt = GetIt.instance;
-
-void setupLocator() {
-  getIt.registerLazySingleton<AuthService>(() => FirebaseAuthService());
-  getIt.registerSingleton<LocateService>(LocateService());
-}
-```
-
----
-
-## 🔐 Authentication Flow
-
-* New users can register using **email, password, and full name**
-* Firebase securely stores credentials
-* Authenticated users are redirected to the Home screen
-* Users can log out via `FirebaseAuth.instance.signOut()`
-
----
-
-## 🎨 Design System
-
-The app uses a centralized design system to ensure consistency across components:
-
-* Colors – `AppColor`
-* Spacing – `Spacing`
-* Typography – `AppTextStyle`
-* Custom widgets – `CustomButton`, `AppLogoIcon`, `AppLogoText`, etc.
-
----
-
-## 🧪 Manual Testing
-
-The application has been manually tested for the following flows:
-
-* ✅ User registration
-* ✅ Login
-* ✅ Logout and session management
-* ✅ Language switching
-* ✅ UI responsiveness on multiple devices
-
----
-
-## 👨‍💻 Author
-
-**Willian Oliveira**
-Flutter Developer
-[LinkedIn](https://www.linkedin.com/in/willian-natieres-67109934/) • [GitHub](https://github.com/williansw)
-
----
-
-## 📜 License
-
-MIT License © 2025
+Este projeto é de uso interno e mantido pela **SW**. Todos os direitos reservados.
